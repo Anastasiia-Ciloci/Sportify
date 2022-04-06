@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS sportify_db;
+
+CREATE DATABASE sportify_db;
