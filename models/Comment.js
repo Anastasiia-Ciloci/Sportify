@@ -16,12 +16,14 @@ Comment.init(
       allowNull: false,
     },
     user_id: {
+      type: DataTypes.INTEGER,
       references: {
         model: 'user',
         key: 'id',
       }
     },
     workout_id: {
+      type: DataTypes.INTEGER,
       references: {
         model: 'workout',
         key: 'id',
@@ -33,7 +35,7 @@ Comment.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'project',
+    modelName: 'comment',
   }
 );
 

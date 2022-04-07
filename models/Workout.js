@@ -23,12 +23,14 @@ Workout.init(
       allowNull: false,
     },
     intensity_id: {
+      type: DataTypes.INTEGER,
       references: {
         model: 'intensity',
         key: 'id',
       }
     },
     user_id: {
+      type: DataTypes.INTEGER,
       references: {
         model: 'user',
         key: 'id'
@@ -40,7 +42,7 @@ Workout.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'project',
+    modelName: 'workout',
   }
 );
 
