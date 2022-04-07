@@ -1,0 +1,57 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sportify</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../public/stylesheets/style.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Monoton&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <header>
+      <p id="sportify">Sportify</p>
+      <div class="nav-tags" class="menu-bar">
+        <a href="#">Home</a>
+        <a href="#">My Profile</a>
+        <a href="#">Workouts</a>
+        <a href="#">Music</a>
+      </div>
+      <div class="nav-tags">
+        <!-- {{#if loggedIn}} -->
+        <a href="#" id="logout" class="btn-no-style">Log out </a>
+        <!-- {{/if}} -->
+      </div>
+    </header>
+
+    <main>
+      <div class="main-content">
+        <img
+          src="../html/images/Plyometrics-Workout-Cluster-Sets_2.jpg"
+          alt="sport-img"
+          width="100%"
+        />
+        <!-- {{{body}}} -->
+      </div>
+    </main>
+
+    <div>
+      <card>
+        <header class="card-header">this is a card header</header>
+        <p>this is a card Lorem ipsum dolor sit amet consectetur</p>
+      </card>
+    </div>
+
+    <!-- {{#if loggedIn}} -->
+    <script src="/js/logout.js"></script>
+    <!-- {{/if}} -->
+  </body>
+</html>
