@@ -17,9 +17,12 @@ Music.init(
     },
     // not sure what to add below in songs yet, need to figure out the spotify api to see if we can use their playlists //
     songs: {
+      type: DataTypes.STRING,
+      allowNull: true,
 
     },
     workout_id: {
+      type: DataTypes.INTEGER,
       references: {
         model: 'workout',
         key: 'id',
@@ -31,7 +34,7 @@ Music.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'project',
+    modelName: 'music',
   }
 );
 
