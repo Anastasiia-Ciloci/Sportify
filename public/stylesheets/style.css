@@ -40,18 +40,42 @@ header {
 .menu-bar a {
   padding-right: 0px;
 }
-card {
-  display: block;
-  border: #772014 2px solid;
-  color: rgb(213, 223, 230);
-  background-color: rgb(173, 91, 91);
+
+/* WORKOUT CARD */
+.workout-card {
+  /* display: block; */
+  box-shadow: 0 4px 8px 0 rgba(161, 154, 154, 0.501);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
 }
 
-.card-header {
+.workout-card-header {
   color: white;
   background-color: #13293d;
 }
+.btn-save {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: rgb(202, 45, 45);
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+.btn-save:hover {
+  opacity: 0.7;
+}
+/* LOGIN CARD */
+.login-card {
+  background-color: rgba(226, 211, 211, 0.396);
+}
 
+/* MEDIA QUERY */
 /* Tablets - header changes color */
 @media screen and (max-width: 992px) {
   header {

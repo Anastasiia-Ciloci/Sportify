@@ -43,11 +43,20 @@
       </div>
     </main>
 
-    <div>
-      <card>
-        <header class="card-header">this is a card header</header>
-        <p>this is a card Lorem ipsum dolor sit amet consectetur</p>
-      </card>
+    <div class="workout-card">
+      <div class="workout-card-header">
+        <img src="" alt="it can have img" />
+        {{workout_name}}
+      </div>
+      <div class="card-body">
+        <p>Description: {{description}}</p>
+        <p>Time frame: {{workout_time}}</p>
+        <p>Level: {{workout_level}}</p>
+        {{!-- {{#if has_nuts}}
+        <p class="has-nuts">Contains Nuts</p>
+        {{/if}} --}}
+        <p><button class="btn-save">Save</button></p>
+      </div>
     </div>
 
     <!-- {{#if loggedIn}} -->
