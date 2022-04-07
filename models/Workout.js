@@ -24,8 +24,14 @@ Workout.init(
     },
     intensity_id: {
       references: {
-        model: 'workout',
+        model: 'intensity',
         key: 'id',
+      }
+    },
+    user_id: {
+      references: {
+        model: 'user',
+        key: 'id'
       }
     }
   },

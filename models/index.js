@@ -4,18 +4,14 @@ const Music = require('./Music');
 const Intensity = require('./Intensity');
 const Comment = require('./Comment');
 
-User.belongsToMany(Workout, {
-  through: {
-    model: Comment,
-    unique: false,
-  },
+User.hasMany(Comment, {
+  foreignKey: 'user_id',
+  onDelete: 'CASCADE',
 });
 
-Workout.belongsToMany(User, {
-  through: {
-    model: Comment,
-    unique: false,
-  },
+Workout.hasMany(Comment, {
+  foreignKey: 'workout_id',
+  onDelete: 'CASCADE',
 });
 
 Comment.belongsTo(User, {
@@ -24,6 +20,14 @@ Comment.belongsTo(User, {
 
 Comment.belongsTo(Workout, {
   foreignKey: 'workout_id',
+});
+
+User.hasMany(Workout, {
+  foreignKey: 'user_id',
+});
+
+Workout.belongsTo(User, {
+  foreignKey: 'user_id',
 });
 
 Workout.hasOne(Music, {
