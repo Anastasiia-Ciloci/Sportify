@@ -8,6 +8,9 @@ const hpp = require("hpp");
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
+const exphbs = require('express-handlebars');
+const hbs = exphbs.create({});
+
 const AppError = require("./utils/appError");
 
 // ROUTES IMPORTS
