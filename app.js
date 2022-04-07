@@ -15,7 +15,7 @@ const AppError = require("./utils/appError");
 
 // ROUTES IMPORTS
 const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
+const userRouter = require('./routes/userRoute');
 
 // EXPRESS
 const app = express();
@@ -46,7 +46,7 @@ app.use(xss());
 
 // ROUTES
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/user', userRouter);
 
 // ERROR HANDLERS
 app.all("*", (req, res, next) => {
@@ -57,10 +57,10 @@ app.all("*", (req, res, next) => {
 // app.use(globalErrorHandler); // <--- this functions process the error.
 
 
-// catch 404 and forward to error handler
-app.use(function (req, res, next) {
-    next(createError(404));
-});
+// catch 404 and forward to error handler. This is a generic error handler, keep this commented for the meantime.
+// app.use(function (req, res, next) {
+//     next(createError(404));
+// });
 
 // IGNORE THIS FUNCTION IN THE MEANTIME.
 // app.use(function (err, req, res, next) {
