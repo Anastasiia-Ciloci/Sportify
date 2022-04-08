@@ -35,7 +35,10 @@ Workout.init(
         model: 'user',
         key: 'id'
       }
-    }
+    },
+    slug: {
+      type: DataTypes.INTEGER,
+    },
   },
   {
     sequelize,
