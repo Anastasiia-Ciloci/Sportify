@@ -1,0 +1,61 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sportify</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../public/stylesheets/style.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Monoton&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <header>
+      <p id="sportify">Sportify</p>
+      <div class="nav-tags" class="menu-bar">
+        <a href="#">Home</a>
+        <a href="#">My Profile</a>
+        <a href="#">About</a>
+      </div>
+      <div class="nav-tags">
+        <!-- {{#if loggedIn}} -->
+        <a href="#" id="logout" class="btn-no-style">Log out </a>
+        <!-- {{/if}} -->
+      </div>
+    </header>
+
+    <div class="card-description">
+      <div>
+        <h3>Description</h3>
+        <p>
+          {{workout_description}} Lorem, ipsum dolor sit amet consectetur
+          adipisicing elit. Ducimus, autem eligendi? Maiores ea dolores
+          voluptatibus voluptatem facere animi, eveniet excepturi commodi sed,
+          nihil at sequi autem repellat accusamus, dolorum amet!
+        </p>
+      </div>
+      <div class="comment-section">
+        <a href="#">Comments(number of comments)</a>
+        <div class="form-floating">
+          <textarea
+            class="form-control"
+            placeholder="Leave a comment here"
+            id="floatingTextarea2"
+          ></textarea>
+          <label for="floatingTextarea2">Comments</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- {{#if loggedIn}} -->
+    <script src="/js/logout.js"></script>
+    <!-- {{/if}} -->
+  </body>
+</html>
