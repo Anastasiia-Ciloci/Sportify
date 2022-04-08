@@ -4,7 +4,7 @@ const authController = require('../controllers/authController')
 
 const router = express.Router();
 
-// router.post('/signup')
+router.post("/signup", authController.signup);
 // router.post('/login')
 
 // router.post("/forgotPassword", auth.forgotPassword);
@@ -28,8 +28,8 @@ router
     .delete(userController.deleteUser);
 
 // I'm keeping this as a reference.
-router.get('/', function (req, res, next) {
-    res.send('respond with a resource');
-});
+// router.get('/', function (req, res, next) {
+//     res.send('respond with a resource');
+// });
 
 module.exports = router;
