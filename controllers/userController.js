@@ -1,6 +1,7 @@
 const AppError = require('../utils/appError')
 const User = require('../models/User');
 const catchAsync = require('../utils/catchAsync')
+const {Workout} = require("../models");
 
 // Note: This folder will probably be refactored short after it's made
 
@@ -31,7 +32,11 @@ exports.getAllUsers = catchAsync(async (req, res, next) => {
 
 // get a specific user.
 exports.getUser = catchAsync(async (req, res, next) => {
-    const user = await User.findByPk(req.params.id);
+    const user = await User.findByPk(req.params.id, {
+        include: {
+            model: Workout
+        }
+    });
 
     // Removes the password from the output.
     user.password = undefined;
