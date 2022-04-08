@@ -1,16 +1,16 @@
-const {Model, DataTypes} = require('sequelize');
+const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
 class Workout extends Model {
 }
 
 Workout.init(
-    {
-        id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            primaryKey: true,
-            autoIncrement: true,
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true,
     },
     title: {
       type: DataTypes.STRING,
@@ -31,7 +31,7 @@ Workout.init(
       }
     },
     slug: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
     },
   },
   {
