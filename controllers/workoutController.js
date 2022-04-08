@@ -6,7 +6,7 @@ const catchAsync = require('../utils/catchAsync')
 
 exports.createWorkout = catchAsync(async (req, res, next) => {
     // Creates a new workout.
-    const newWorkout = await Workout.create(req.body)
+    const newWorkout = await Workout.create(req.body);
 
     // Response.
     res.status(200).json({

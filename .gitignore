@@ -106,3 +106,6 @@ dist
 .idea/
 config.env
 config/config.json
+ssh/jwtRS256.key
+ssh/jwtRS256.key.pub
+ssh

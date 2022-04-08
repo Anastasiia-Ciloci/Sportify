@@ -11,12 +11,15 @@ const logger = require('morgan');
 const exphbs = require('express-handlebars');
 const hbs = exphbs.create({});
 
-const AppError = require("./utils/appError");
+const AppError = require('./utils/appError');
+const globalErrorHandler = require('./controllers/errorController');
 
 // ROUTES IMPORTS
 const indexRouter = require('./routes/index');
-const userRouter = require('./routes/userRoute');
-const workoutRouter = require('./routes/workoutRoute');
+const userRouter = require('./routes/userRoutes');
+const workoutRouter = require('./routes/workoutRoutes');
+const intensityRouter = require('./routes/intensityRoutes');
+const commentRouter = require('./routes/commentRoutes')
 
 // EXPRESS
 const app = express();
@@ -46,34 +49,21 @@ app.use(helmet());
 app.use(xss());
 
 // ROUTES
+app.use('/api/v1/user', userRouter);
+app.use('/api/v1/workout', workoutRouter);
+app.use('/api/v1/intensity', intensityRouter)
+app.use('/api/v1/comment', commentRouter)
 app.use('/', indexRouter);
-app.use('/user', userRouter);
-app.use('/workout', workoutRouter);
+// Will probably add an index api file in the future and nest all the API routes inside.s
+
 
 // ERROR HANDLERS
 app.all("*", (req, res, next) => {
     next(new AppError(`Can't find ${req.originalUrl} on this server`, 404)); // <--- When this catches an error.
 });
 
-// @TODO: Build this controller.
-// app.use(globalErrorHandler); // <--- this functions process the error.
-
-
-// catch 404 and forward to error handler. This is a generic error handler, keep this commented for the meantime.
-// app.use(function (req, res, next) {
-//     next(createError(404));
-// });
-
-// IGNORE THIS FUNCTION IN THE MEANTIME.
-// app.use(function (err, req, res, next) {
-//     // set locals, only providing error in development
-//     res.locals.message = err.message;
-//     res.locals.error = req.app.get('env') === 'development' ? err : {};
-//
-//     // render the error page
-//     res.status(err.status || 500);
-//     res.render('error');
-// });
+// Error handler
+app.use(globalErrorHandler);
 
 // EXPORT
 module.exports = app;
