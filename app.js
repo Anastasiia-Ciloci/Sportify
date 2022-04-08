@@ -16,6 +16,7 @@ const AppError = require("./utils/appError");
 // ROUTES IMPORTS
 const indexRouter = require('./routes/index');
 const userRouter = require('./routes/userRoute');
+const workoutRouter = require('./routes/workoutRoute');
 
 // EXPRESS
 const app = express();
@@ -47,6 +48,7 @@ app.use(xss());
 // ROUTES
 app.use('/', indexRouter);
 app.use('/user', userRouter);
+app.use('/workout', workoutRouter);
 
 // ERROR HANDLERS
 app.all("*", (req, res, next) => {
