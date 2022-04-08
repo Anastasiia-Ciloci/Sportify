@@ -3,14 +3,16 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-color: black;
 }
+/* HEADER TAGS */
 
 a {
   color: white;
   font-size: 25px;
   text-decoration: none;
+  padding: 10px;
 }
 a:hover {
-  color: #8ac4ff;
+  color: #5ab8b8;
 }
 #sportify {
   font-family: "Monoton", cursive;
@@ -19,14 +21,14 @@ a:hover {
 }
 
 img header {
-  padding: 60px;
+  padding: 10px;
   text-align: center;
   background: #13293d;
   color: #fff;
   max-width: 100%;
 }
 header {
-  padding: 60px;
+  padding: 20px;
   text-align: center;
   background: #13293d;
   color: #fff;
@@ -42,23 +44,34 @@ header {
 }
 
 /* WORKOUT CARD */
+#workout-card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: flex-start;
+}
 .workout-card {
-  /* display: block; */
   box-shadow: 0 4px 8px 0 rgba(161, 154, 154, 0.501);
   max-width: 300px;
   margin: auto;
   text-align: center;
-  font-family: arial;
+  font-family: serif;
+  font-size: 20px;
+  color: #b8d6f2;
+  background-color: rgba(255, 255, 255, 0.241);
+  margin: 50px;
+
+  /* justify-items: center; */
 }
 
 .workout-card-header {
   color: white;
   background-color: #13293d;
+  height: 180px;
 }
 .btn-save {
   border: none;
   outline: 0;
-  display: inline-block;
   padding: 8px;
   color: white;
   background-color: rgb(202, 45, 45);
@@ -69,6 +82,15 @@ header {
 }
 .btn-save:hover {
   opacity: 0.7;
+}
+
+/* WORKOUT CARD DESCRIPTION */
+.card-description {
+  background-color: rgb(80, 66, 66);
+}
+/* Comment section */
+.comment-section {
+  background-color: rgb(103, 85, 85);
 }
 /* LOGIN CARD */
 .login-card {
