@@ -8,8 +8,9 @@ router
   .get(viewsController.renderHompage)
 
 router
-  .route('/:id')
+  .route('/:slug')
   .get(viewsController.renderWorkout)
   .get(viewsController.renderProfile)
+
 
 module.exports = router;

@@ -3,6 +3,8 @@ const slugify = require("slugify");
 const sequelize = require('../config/connection');
 const catchAsync = require('../utils/catchAsync');
 
+const intensityLevels = ['Easy', 'Medium', 'Hard'];
+
 class Workout extends Model {
 }
 
@@ -20,6 +22,14 @@ Workout.init(
         },
         description: {
             type: DataTypes.STRING,
+        }, intensity: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                checkIntensity(value) {
+                    if (!intensityLevels.includes(value)) throw new Error('Workout must have an intensity level.')
+                }
+            }
         },
         time_frame: {
             type: DataTypes.STRING,

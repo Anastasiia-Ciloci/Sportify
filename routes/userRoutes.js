@@ -17,7 +17,7 @@ router.post('/login', authController.login);
 
 router
     .route('/')
-    .get(authController.protect, userController.getAllUsers)
+    .get(authController.protect, authController.restrictTo('ADMIN'), userController.getAllUsers)
     .post(authController.protect, authController.restrictTo('ADMIN'), userController.createUser)
     .put(authController.protect, authController.restrictTo('ADMIN'), userController.updateUser)
     .delete(authController.protect, authController.restrictTo('ADMIN'), userController.deleteUser)
