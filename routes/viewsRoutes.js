@@ -11,3 +11,5 @@ router
   .route('/:id')
   .get(viewsController.renderWorkout)
   .get(viewsController.renderProfile)
+
+module.exports = router;
