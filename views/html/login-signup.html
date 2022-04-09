@@ -30,29 +30,30 @@
     <header>
       <p id="sportify">Sportify</p>
       <div class="nav-tags" class="menu-bar">
-        <a href="#">Sign up</a>
-        <a href="#">Log in</a>
+        <p class="nav-phrase">Make your life better</p>
       </div>
     </header>
 
     <div class="container">
       <div class="login-card">
-        <h2 class="page-title">Login</h2>
-        <form class="form login-form">
-          <div class="form-group">
-            <label for="email-login">Email:</label>
-            <input class="form-input" type="text" id="email-login" />
-          </div>
-          <div class="form-group">
-            <label for="password-login">Password:</label>
-            <input class="form-input" type="password" id="password-login" />
-          </div>
-          <div class="form-group">
-            <button class="btn btn-primary" type="submit">login</button>
-          </div>
-        </form>
+        <div class="login">
+          <h2 class="page-title">Log in</h2>
+          <form class="form login-form">
+            <div class="form-group">
+              <label for="email-login">Email:</label>
+              <input class="form-input" type="text" id="email-login" />
+            </div>
+            <div class="form-group">
+              <label for="password-login">Password:</label>
+              <input class="form-input" type="password" id="password-login" />
+            </div>
+            <div class="form-group">
+              <button class="login-btn" type="submit">Log in</button>
+            </div>
+          </form>
+        </div>
         <div class="signup-form">
-          <h2 class="page-title">Signup</h2>
+          <h2 class="page-title">Sign up</h2>
           <form class="form signup-form">
             <div class="form-group">
               <label for="username-signup">Username:</label>
@@ -67,23 +68,21 @@
               <input class="form-input" type="password" id="password-signup" />
             </div>
             <div class="form-group">
-              <button class="btn btn-primary" type="submit">signup</button>
+              <button class="signup-btn" type="submit">Sign Up</button>
             </div>
           </form>
         </div>
       </div>
-      <div class="main-content">
-        <img
-          src="../html/images/sport-invernali-ciaspole-e1450793701501.jpg"
-          alt="sport-img"
-          width="100%"
-        />
-        <!-- {{{body}}} -->
-      </div>
     </div>
-
-    <!-- {{#if loggedIn}} -->
-    <script src="/js/logout.js"></script>
-    <!-- {{/if}} -->
+    <div class="main-content">
+      <img
+        src="../html/images/sport-invernali-ciaspole-e1450793701501.jpg"
+        alt="sport-img"
+        width="100%"
+      />
+    </div>
   </body>
+  <footer>
+    <h4 id="copyright">Copyright © 2022 by Sportify</h4>
+  </footer>
 </html>

@@ -40,12 +40,40 @@ header {
   padding: 10px;
   display: inline-block;
 }
-.menu-bar a {
+/* .menu-bar a {
   padding-right: 0px;
+} */
+.nav-phrase {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-style: italic;
+  font-size: 25px;
 }
 /* LOGIN CARD */
+.container {
+  align-items: center;
+  justify-content: space-around;
+  color: azure;
+}
+label {
+  font-size: 18px;
+  padding: 3px;
+}
 .login-card {
-  background-color: rgba(226, 211, 211, 0.396);
+  text-align: right;
+  color: rgba(240, 248, 255, 0.811);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: flex-start;
+  margin: 3%;
+}
+.login-btn,
+.signup-btn {
+  align-items: flex-start;
+}
+.page-title {
+  text-align: center;
 }
 
 /* WORKOUT CARD */
@@ -72,6 +100,8 @@ header {
   background-color: #13293d;
   padding: 20px;
 }
+.login-btn,
+.signup-btn,
 .btn-save,
 .btn-add-to-list {
   border: none;
@@ -84,6 +114,12 @@ header {
   width: 100%;
   font-size: 18px;
 }
+.login-btn,
+.signup-btn {
+  background-color: rgb(102, 92, 92);
+}
+.login-btn:hover,
+.signup-btn:hover,
 .btn-save:hover,
 .btn-add-to-list:hover {
   opacity: 0.7;
@@ -120,33 +156,93 @@ div .comment-section a {
 .create-workout {
   color: aliceblue;
   font-size: 35px;
+  margin: 5%;
+  width: 800px;
+  padding-left: 10%;
+}
+.workout {
+  background-color: rgb(102, 92, 92);
 }
 
 /* PROFILE PAGE : aside bar */
+aside {
+  background-color: rgba(51, 49, 49, 0.577);
+  margin-top: 2%;
+}
+.create-workout h2 {
+  padding-bottom: 50px;
+  text-align: center;
+  color: rgba(219, 226, 226, 0.856);
+}
+.aside-text {
+  padding-top: 50px;
+  text-align: center;
+  color: rgba(219, 226, 226, 0.856);
+}
+/* About PAGE */
+.about {
+  text-align: center;
+  color: rgba(219, 226, 226, 0.924);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin: 10% 15%;
+  background-color: rgba(61, 55, 55, 0.51);
+}
+.about h1 {
+  margin: 30px;
+}
+/* Footer */
 
+footer {
+  margin-top: 2%;
+  padding: 20px;
+  text-align: center;
+  background: #13293d;
+  color: rgb(231, 217, 217);
+}
+#copyright {
+  font-size: 15px;
+}
 /* MEDIA QUERY */
 /* Tablets - header changes color */
 @media screen and (max-width: 992px) {
   header {
-    background: #772014;
+    background: #852a1e;
   }
 }
 
 /* Large smartphones - navbar changes color */
 @media screen and (max-width: 768px) {
   header {
-    background-color: #bb8588;
+    background-color: #13293d;
+  }
+  .create-workout {
+    color: rgb(210, 221, 230);
+    font-size: 35px;
+    margin-right: 20px;
   }
 }
 
 /* Small smartphones - image placeholders change color */
 @media screen and (max-width: 576px) {
   header {
-    background-color: #8ac4ff;
+    background-color: #96c4f3;
+  }
+  header p {
+    color: #333f4ac6;
   }
   #sportify {
     font-family: "Monoton", cursive;
     font-size: 50px;
     color: rgb(59, 52, 80);
+  }
+  .profile-card {
+    flex-wrap: wrap-reverse;
+  }
+  .create-workout {
+    color: rgb(210, 227, 242);
+    text-align: center;
+    align-content: center;
+    background-color: rgba(105, 94, 94, 0.327);
+    padding: 0;
   }
 }
