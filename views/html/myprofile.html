@@ -37,8 +37,7 @@
     <div class="nav-tags" class="menu-bar">
       <a href="#">Home</a>
       <a href="#">My Profile</a>
-      <a href="#">Workouts</a>
-      <a href="#">Music</a>
+      <a href="#">About</a>
     </div>
     <div class="nav-tags">
       <!-- {{#if loggedIn}} -->
@@ -49,7 +48,7 @@
   <body>
     <div class="profile-card">
       <aside class="saved-workouts">
-        <h2>Saved Workouts</h2>
+        <h2 class="aside-text">Saved Workouts</h2>
         {{workout-cards}}
         <div class="workout-card">
           <div class="workout-card-header">
@@ -71,11 +70,12 @@
               {{workout_level}}
             </p>
 
-            <p><button class="btn-save">read more</button></p>
+            <p><button class="btn-save">Read more</button></p>
           </div>
         </div>
       </aside>
       <div class="create-workout">
+        <h2>Create your own workout</h2>
         <div class="mb-3">
           <label for="workout-name" class="form-label">Name of workout</label>
           <input
@@ -102,15 +102,19 @@
           </ul>
         </div>
         <div class="mb-3">
-          <label for="description" class="form-label">Workout steps</label>
-          <textarea class="form-control" id="workout-steps" rows="3"></textarea>
-          <p><button class="btn-save">Save workout</button></p>
+          <label for="description" class="form-label">Workout steps:</label>
+          <textarea
+            class="form-control"
+            id="workout-steps"
+            rows="3"
+            placeholder="Type the workout steps here "
+          ></textarea>
+          <p><button class="btn-save workout">Save workout</button></p>
         </div>
       </div>
     </div>
-
-    <!-- {{#if loggedIn}} -->
-    <script src="/js/logout.js"></script>
-    <!-- {{/if}} -->
   </body>
+  <footer>
+    <h4 id="copyright">Copyright © 2022 by Sportify</h4>
+  </footer>
 </html>
