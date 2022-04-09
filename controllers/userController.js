@@ -12,6 +12,7 @@ exports.createUser = catchAsync(async (req, res, next) => {
 
     // Removes the password from the output.
     newUser.password = undefined;
+    newUser.passwordConfirm = undefined;
 
     // Sends responses with the newly created user.
     res.status(201).json({
