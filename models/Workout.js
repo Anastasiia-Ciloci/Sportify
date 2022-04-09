@@ -1,5 +1,7 @@
 const {Model, DataTypes} = require('sequelize');
+const slugify = require("slugify");
 const sequelize = require('../config/connection');
+const catchAsync = require('../utils/catchAsync');
 
 class Workout extends Model {
 }
@@ -11,36 +13,44 @@ Workout.init(
             allowNull: false,
             primaryKey: true,
             autoIncrement: true,
+        },
+        title: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        description: {
+            type: DataTypes.STRING,
+        },
+        time_frame: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        user_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'user',
+                key: 'id'
+            }
+        },
+        slug: {
+            type: DataTypes.STRING,
+        },
     },
-    title: {
-      type: DataTypes.STRING,
-      allowNull: false,
+    {
+        hooks: {
+            beforeCreate: catchAsync(async (workout) => {
+                // console.log(workout.title)
+                // Can also access workout object values as: "workout.title"
+                const data = workout.dataValues;
+                workout.dataValues.slug = await slugify(data.title, {lower: true});
+            })
+        },
+        sequelize,
+        timestamps: false,
+        freezeTableName: true,
+        underscored: true,
+        modelName: 'workout',
     },
-    description: {
-      type: DataTypes.STRING,
-    },
-    time_frame: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    user_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'user',
-        key: 'id'
-      }
-    },
-    slug: {
-      type: DataTypes.INTEGER,
-    },
-  },
-  {
-    sequelize,
-    timestamps: false,
-    freezeTableName: true,
-    underscored: true,
-    modelName: 'workout',
-  }
 );
 
 module.exports = Workout;

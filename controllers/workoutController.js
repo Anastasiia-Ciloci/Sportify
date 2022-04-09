@@ -1,17 +1,32 @@
 const AppError = require('../utils/appError')
 const Workout = require('../models/Workout');
 const catchAsync = require('../utils/catchAsync')
+const {Comment} = require("../models")
 
 // Note: This folder will probably be refactored short after it's made
 
 exports.createWorkout = catchAsync(async (req, res, next) => {
     // Creates a new workout.
-    const newWorkout = await Workout.create(req.body)
+    const newWorkout = await Workout.create(req.body);
 
     // Response.
     res.status(200).json({
         status: 'Success',
         newWorkout
+    })
+})
+
+// get a specific workout.
+exports.getWorkout = catchAsync(async (req, res, next) => {
+    const workout = await Workout.findByPk(req.params.id, {
+        include: {
+           model: Comment 
+        }
+    })
+    // Response.
+    res.status(200).json({
+        status: 'Success',
+        workout
     })
 })
 
