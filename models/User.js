@@ -2,6 +2,8 @@ const {Model, DataTypes} = require('sequelize');
 const bcrypt = require('bcryptjs');
 const sequelize = require('../config/connection');
 
+const ROLES = ['USER', 'TRAINER', 'ADMIN'];
+
 class User extends Model {
     checkPassword(loginPw) {
         return bcrypt.compareSync(loginPw, this.password);
@@ -35,17 +37,26 @@ User.init(
                 len: [8],
             },
         },
+        passwordConfirm: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                confirmPassword() {
+                    if (this.passwordConfirm !== this.password) {
+                        throw new Error('Passwords do not match');
+                    }
+                }
+            }
+        },
         role: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 checkRole(value) {
-                    if (value !== 'USER') {
-                        throw new Error('User role must be either "USER", "TRAINER" or "ADMIN"')
-                    }
+                    if (!ROLES.includes(value)) throw new Error('User role must be either "USER", "TRAINER" or "ADMIN"')
                 }
             }
-        }
+        },
     },
     {
         hooks: {

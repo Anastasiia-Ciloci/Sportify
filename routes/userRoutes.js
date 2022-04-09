@@ -5,7 +5,7 @@ const authController = require('../controllers/authController')
 const router = express.Router();
 
 router.post("/signup", authController.signup);
-// router.post('/login')
+router.post('/login', authController.login);
 
 // router.post("/forgotPassword", auth.forgotPassword);
 // router.patch("/resetPassword/:token", auth.resetPassword);
@@ -17,15 +17,15 @@ router.post("/signup", authController.signup);
 
 router
     .route('/')
-    .get(userController.getAllUsers)
-    .post(userController.createUser)
-    .put()
-    .delete()
+    .get(authController.protect, userController.getAllUsers)
+    .post(authController.protect, authController.restrictTo('ADMIN'), userController.createUser)
+    .put(authController.protect, authController.restrictTo('ADMIN'), userController.updateUser)
+    .delete(authController.protect, authController.restrictTo('ADMIN'), userController.deleteUser)
 
 router
     .route('/:id')
-    .get(userController.getUser)
-    .delete(userController.deleteUser);
+    .get(authController.protect, authController.restrictTo('ADMIN'), userController.getUser)
+    .delete(authController.protect, authController.restrictTo('ADMIN'), userController.deleteUser);
 
 // I'm keeping this as a reference.
 // router.get('/', function (req, res, next) {

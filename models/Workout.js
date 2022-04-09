@@ -1,5 +1,7 @@
-const { Model, DataTypes } = require('sequelize');
+const {Model, DataTypes} = require('sequelize');
+const slugify = require("slugify");
 const sequelize = require('../config/connection');
+const catchAsync = require('../utils/catchAsync');
 
 class Workout extends Model {
 }
@@ -35,12 +37,20 @@ Workout.init(
         },
     },
     {
+        hooks: {
+            beforeCreate: catchAsync(async (workout) => {
+                // console.log(workout.title)
+                // Can also access workout object values as: "workout.title"
+                const data = workout.dataValues;
+                workout.dataValues.slug = await slugify(data.title, {lower: true});
+            })
+        },
         sequelize,
         timestamps: false,
         freezeTableName: true,
         underscored: true,
         modelName: 'workout',
-    }
+    },
 );
 
 module.exports = Workout;
