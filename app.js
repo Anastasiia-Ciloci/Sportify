@@ -19,7 +19,8 @@ const indexRouter = require('./routes/index');
 const userRouter = require('./routes/userRoutes');
 const workoutRouter = require('./routes/workoutRoutes');
 const intensityRouter = require('./routes/intensityRoutes');
-const commentRouter = require('./routes/commentRoutes')
+const commentRouter = require('./routes/commentRoutes');
+const viewsRouter = require('./routes/viewsRoutes');
 
 // EXPRESS
 const app = express();
@@ -53,7 +54,7 @@ app.use('/api/v1/user', userRouter);
 app.use('/api/v1/workout', workoutRouter);
 app.use('/api/v1/intensity', intensityRouter)
 app.use('/api/v1/comment', commentRouter)
-app.use('/', indexRouter);
+app.use('/', viewsRouter);
 // Will probably add an index api file in the future and nest all the API routes inside.s
 
 
