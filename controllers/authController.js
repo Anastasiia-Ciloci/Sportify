@@ -88,6 +88,8 @@ exports.protect = catchAsync(async (req, res, next) => {
         req.headers.authorization.startsWith("Bearer")
     ) {
         token = req.headers.authorization.split(" ")[1];
+    } else if (req.cookies.jwt) {
+        token = req.cookies.jwt;
     }
 
     if (!token) {
@@ -107,8 +109,6 @@ exports.protect = catchAsync(async (req, res, next) => {
             401
         );
     }
-
-    console.log(userExist)
 
     // Check if user changed password.
     // if (userExist.changedPasswordAfter(decoded.iat)) {
@@ -133,3 +133,18 @@ exports.restrictTo = (...roles) => {
     }
 }
 
+exports.isLoggedIn = catchAsync(async (req, res, next) => {
+    if (req.cookies.jwt) {
+        const decoded = await promisify(jwt.verify)(token, RSA_PRIVATE_KEY, {algorithms: 'RS256'});
+
+        const currentUser = await User.findByPk(decoded.id);
+        if (!currentUser) {
+            return next();
+        }
+
+        // There is a logged user.
+        req.locals.user = currentUser; // All the express templates have access to the req.locals variable.f
+        next();
+    }
+    next();
+})
