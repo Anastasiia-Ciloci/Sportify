@@ -5,16 +5,16 @@ const authController = require('../controllers/authController')
 
 const router = express.Router()
 
-router.post('/:id',
-    authController.protect,
-    authController.restrictTo('ADMIN'),
-    intensityController.changeIntensity
-);
-
-router.post('/',
-    authController.protect,
-    authController.restrictTo('ADMIN'),
-    intensityController.createIntensity
-);
+// router.post('/:id',
+//     authController.protect,
+//     authController.restrictTo('ADMIN'),
+//     intensityController.changeIntensity
+// );
+//
+// router.post('/',
+//     authController.protect,
+//     authController.restrictTo('ADMIN'),
+//     intensityController.createIntensity
+// );
 
 module.exports = router;

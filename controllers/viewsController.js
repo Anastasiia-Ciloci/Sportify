@@ -6,35 +6,37 @@ const catchAsync = require("../utils/catchAsync");
 
 // renders login/sign up page
 exports.renderLoginSignup = catchAsync(async (req, res, next) => {
-  const allWorkouts = await Workout.findAll();
-
-  res.render("login-signup", allWorkouts);
+    res.render("login-signup", {});
 });
 
 exports.renderTimeline = catchAsync(async (req, res, next) => {
-  const workouts = await Workout.findAll();
+    const workoutsArray = await Workout.findAll();
 
-  res.render('selected-workout', workouts);
+    const workouts = workoutsArray.map(workout => workout.get({plain: true}));
+
+    res.render('timeline', {workouts});
 });
 
 // renders page with selected workout
 exports.renderWorkout = catchAsync(async (req, res, next) => {
-  const selectedWorkout = await Workout.findByPk(req.params.id, {
-    include: {
-      model: Comment,
-    },
-  });
+    const selectedWorkoutData = await Workout.findOne({where: {slug: req.params.slug}}, {
+        include: {
+            model: Comment,
+        },
+    });
+    console.log(req.params)
+    const selectedWorkout = selectedWorkoutData.get({plain: true});
 
-  res.render("selected-workout", selectedWorkout);
+    res.render("selected-workout", {selectedWorkout});
 });
 
 // render profile page
 exports.renderProfile = catchAsync(async (req, res, next) => {
-  const user = await User.findByPk(req.params.id, {
-    include: {
-      model: Workout,
-    },
-  });
-
-  res.render("profilepage", user);
+    const userData = await User.findByPk(req.params.id, {
+        include: {
+            model: Workout,
+        },
+    });
+    const user = userData.get({plain: true})
+    res.render("profilepage", {user});
 });

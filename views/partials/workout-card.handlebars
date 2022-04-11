@@ -1,25 +1,28 @@
- <div id="workout-card">
-      <div class="workout-card">
-        <div class="workout-card-header">
-          <img
-            src="./images/best-exercise-for-fibromyalgia.jpg"
-            alt="sportimg"
-            width="100%"
-            height="150px"
-          />
-          {{workouts.title}}
-        </div>
-        <div class="card-body">
-          <!-- <p><strong>Description:</strong> {{description}}</p> -->
-          <p>
-            <strong>Time frame:</strong>
-            {{workouts.time_frame}}
-          </p>
-          <p>
-            <strong>Level:</strong>
-            {{workouts.intensity}}
-          </p>
+<div id="workout-card">
+  <div class="workout-card">
+    <div class="workout-card-header">
+      <img
+          src="./images/best-exercise-for-fibromyalgia.jpg"
+          alt="sporting"
+          width="100%"
+          height="150px"
+      />
+      {{workout.title}}
+    </div>
+    <div class="card-body">
+      <p><strong>Description:</strong> {{workout.description}}</p>
+      <p>
+        <strong>Time frame:</strong>
+        {{workout.time_frame}}
+      </p>
+      <p>
+        <strong>Level:</strong>
+        {{workout.intensity}}
+      </p>
 
-          <p><button class="btn-save">read more</button></p>
-        </div>
-      </div>
+      <p>
+        <button class="btn-save">read more</button>
+      </p>
+    </div>
+  </div>
+</div>
