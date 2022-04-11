@@ -12,9 +12,8 @@ const loginFormHandler = async (event) => {
     }).catch (error => console.log(error));
 
     if (response.ok) {
-      // let url = new URL()
 
-      document.location.replace('/home');
+      document.location.replace('/');
     } else {
       alert('Failed to log in.');
     }
@@ -28,8 +27,10 @@ const signupFormHandler = async (event) => {
   const email = document.querySelector('#email-signup').value.trim();
   const password = document.querySelector('#password-signup').value.trim();
 
+  console.log(username,email,password)
+
   if (username && email && password) {
-    const response = await fetch('localhost:8001/api/v1/users/signup', {
+    const response = await fetch('/api/v1/user/signup', {
       method: 'POST',
       body: JSON.stringify({ name, email, password}),
       headers: { 'Content-Type': 'application/json' },

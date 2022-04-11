@@ -7,13 +7,13 @@ const router = express.Router()
 
 router
     .route('/')
-    .get(authController.protect, commentController.getAllComments)
-    .post(authController.protect, commentController.createComment)
+    .get(authController.isLoggedIn, commentController.getAllComments)
+    .post(authController.isLoggedIn, commentController.createComment)
 
 router
     .route('/:id')
-    .get(authController.protect, commentController.getComment)
-    .put(authController.protect, commentController.updateComment)
-    .delete(authController.protect, commentController.updateComment)
+    .get(authController.isLoggedIn, commentController.getComment)
+    .put(authController.isLoggedIn, commentController.updateComment)
+    .delete(authController.isLoggedIn, commentController.updateComment)
 
 module.exports = router;
