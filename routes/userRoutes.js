@@ -7,16 +7,16 @@ const router = express.Router();
 router.post("/signup", authController.signup);
 router.post('/login', authController.login);
 
-// router
-//     .route('/')
-//     .get(authController.restrictTo('ADMIN'), userController.getAllUsers)
-//     .post(userController.createUser)
-//     .put(authController.restrictTo('ADMIN'), userController.updateUser)
-//     .delete(authController.restrictTo('ADMIN'), userController.deleteUser)
+router
+    .route('/')
+    .get(userController.getAllUsers)
+    .post(userController.createUser)
+    .put(authController.restrictTo('ADMIN'), userController.updateUser)
+    .delete(authController.restrictTo('ADMIN'), userController.deleteUser)
 
-// router
-//     .route('/:id')
-//     .get(authController.restrictTo('ADMIN'), userController.getUser)
+router
+    .route('/:id')
+    .get(userController.getUser)
 //     .delete(authController.restrictTo('ADMIN'), userController.deleteUser);
 
 // I'm keeping this as a reference.
