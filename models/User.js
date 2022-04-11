@@ -51,6 +51,7 @@ User.init(
         role: {
             type: DataTypes.STRING,
             allowNull: false,
+            defaultValue:'USER',
             validate: {
                 checkRole(value) {
                     if (!ROLES.includes(value)) throw new Error('User role must be either "USER", "TRAINER" or "ADMIN"')

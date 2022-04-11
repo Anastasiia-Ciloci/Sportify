@@ -5,13 +5,17 @@ const authController = require('../controllers/authController');
 const router = express.Router();
 
 router
-    .route('/')
-    .get(viewsController.renderHompage)
+    .route('/login')
+    .get(viewsController.renderLoginSignup)
+
 
 router
-    .route('/:slug')
-    .get(viewsController.renderWorkout)
-    .get(viewsController.renderProfile)
+    .route('/')
+    .get(authController.isLoggedIn, viewsController.renderTimeline)
 
+router
+    .route('/workouts/:slug')
+    .get(authController.isLoggedIn, viewsController.renderWorkout)
+// .get(viewsController.renderProfile)
 
 module.exports = router;

@@ -1,11 +1,8 @@
 // PACKAGE IMPORTS
+const session = require('express-session');
 const createError = require("http-errors");
 const express = require("express");
 const path = require("path");
-const helmet = require("helmet");
-const xss = require("xss-clean");
-const hpp = require("hpp");
-const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 
 const exphbs = require("express-handlebars");
@@ -28,6 +25,15 @@ const app = express();
 // Serve public folder
 app.use(express.static(path.join(__dirname, "public")));
 
+const sess = {
+    secret: '34kj5g34jk25g3jh4g23lk4gkjh234g23jkh4g2',
+    cookie: {},
+    resave: false,
+    saveUninitialized: false,
+};
+
+app.use(session(sess));
+
 // view engine setup
 
 app.engine("handlebars", hbs.engine);
@@ -40,15 +46,12 @@ app.set("view engine", "handlebars");
 app.use(logger("dev"));
 
 // Body parser
-app.use(express.json({ limit: "10kb" }));
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+app.use(express.json({limit: "10kb"}));
+app.use(express.urlencoded({extended: false}));
 
-// Set security HTTP Headers.
-app.use(helmet());
-
-// Data sanitization against XSS
-app.use(xss());
+app.get('/blue/baby', (req, res) => {
+    res.json('HELLO BLUE BABY');
+})
 
 // ROUTES
 app.use("/api/v1/user", userRouter);
@@ -60,7 +63,7 @@ app.use("/", viewsRouter);
 
 // ERROR HANDLERS
 app.all("*", (req, res, next) => {
-  next(new AppError(`Can't find ${req.originalUrl} on this server`, 404)); // <--- When this catches an error.
+    next(new AppError(`Can't find ${req.originalUrl} on this server`, 404)); // <--- When this catches an error.
 });
 
 // Error handler
