@@ -6,12 +6,15 @@ const router = express.Router();
 
 router
     .route('/')
-    .get(viewsController.renderHompage)
+    .get(viewsController.renderLoginSignup)
 
 router
     .route('/:slug')
     .get(viewsController.renderWorkout)
     .get(viewsController.renderProfile)
 
+router 
+    .route('/home')
+    .get(viewsController.renderTimeline)
 
 module.exports = router;
