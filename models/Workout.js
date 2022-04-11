@@ -46,47 +46,7 @@ Workout.init(
             type: DataTypes.STRING,
         },
     },
-    title: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    description: {
-      type: DataTypes.STRING,
-    },
-    /*intensity: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        checkIntensity(value) {
-          if (!intensityLevels.includes(value))
-            throw new Error("Workout must have an intensity level.");
-        },
-      },
-    },*/
-    time_frame: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    user_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: "user",
-        key: "id",
-      },
-    },
-    slug: {
-      type: DataTypes.STRING,
-    },
-  },
-  {
-    hooks: {
-      beforeCreate: catchAsync(async (workout) => {
-        // console.log(workout.title)
-        // Can also access workout object values as: "workout.title"
-        const data = workout.dataValues;
-        workout.dataValues.slug = await slugify(data.title, { lower: true });
-      }),
-    },
+{
     sequelize,
     timestamps: false,
     freezeTableName: true,

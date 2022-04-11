@@ -4,11 +4,17 @@ const Comment = require("../models/Comment");
 const Intensity = require("../models/Intensity");
 const catchAsync = require("../utils/catchAsync");
 
-// renders homepage
-exports.renderHompage = catchAsync(async (req, res, next) => {
+// renders login/sign up page
+exports.renderLoginSignup = catchAsync(async (req, res, next) => {
   const allWorkouts = await Workout.findAll();
 
-  res.render("home", allWorkouts);
+  res.render("login-signup", allWorkouts);
+});
+
+exports.renderTimeline = catchAsync(async (req, res, next) => {
+  const workouts = await Workout.findAll();
+
+  res.render('selected-workout', workouts);
 });
 
 // renders page with selected workout
