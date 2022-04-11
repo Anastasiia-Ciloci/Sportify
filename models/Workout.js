@@ -19,9 +19,10 @@ Workout.init(
         title: {
             type: DataTypes.STRING,
             allowNull: false,
+
         },
         description: {
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT,
         }, intensity: {
             type: DataTypes.STRING,
             allowNull: false,
