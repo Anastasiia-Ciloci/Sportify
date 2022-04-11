@@ -20,12 +20,14 @@ exports.createWorkout = catchAsync(async (req, res, next) => {
 
 // get a specific workout.
 exports.getWorkout = catchAsync(async (req, res, next) => {
-    const workout = await Workout.findByPk(req.params.id, {
+    const workout = await Workout.findOne({
+        where: {slug: req.params.slug},
         include: [
             {model: Comment},
-            {model: User, attributes: {exclude:['password', 'passwordConfirm']}}
+            {model: User, attributes: {exclude: ['password', 'passwordConfirm']}}
         ]
     })
+
     // Response.
     res.status(200).json({
         status: 'Success',
@@ -56,12 +58,7 @@ exports.deleteWorkout = catchAsync(async (req, res, next) => {
 })
 
 exports.updateWorkout = catchAsync(async (req, res, next) => {
-    const updatedWorkout = await Workout.update({
-        title: req.body.title,
-        description: req.body.description,
-        time_frame: req.body.time_frame,
-        user_id: req.body.user_id
-    })
+    const updatedWorkout = await Workout.update(req.body, {where: {slug: req.params.slug}})
 
     res.status(201).json({
         status: 'Success!',
