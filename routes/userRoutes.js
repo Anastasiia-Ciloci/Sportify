@@ -11,8 +11,8 @@ router
     .route('/')
     .get(userController.getAllUsers)
     .post(userController.createUser)
-    .put(authController.restrictTo('ADMIN'), userController.updateUser)
-    .delete(authController.restrictTo('ADMIN'), userController.deleteUser)
+    .put(userController.updateUser)
+    .delete(userController.deleteUser)
 
 router
     .route('/:id')

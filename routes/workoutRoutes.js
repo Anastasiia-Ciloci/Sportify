@@ -7,12 +7,12 @@ const router = express.Router({mergeParams: true})
 router
     .route('/')
     .get(workoutController.getAllWorkouts)
-    .post(authController.isLoggedIn, authController.restrictTo('TRAINER', 'ADMIN', 'USER'), workoutController.createWorkout)
+    .post(workoutController.createWorkout)
 
 router
     .route('/:slug')
     .get(authController.isLoggedIn, workoutController.getWorkout)
-    .put(authController.isLoggedIn, authController.restrictTo('TRAINER', 'ADMIN'), workoutController.updateWorkout)
-    .delete(authController.isLoggedIn, authController.restrictTo('TRAINER', 'ADMIN'), workoutController.deleteWorkout)
+    .put(workoutController.updateWorkout)
+    .delete(workoutController.deleteWorkout)
 
 module.exports = router;

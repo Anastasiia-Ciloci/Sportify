@@ -24,6 +24,7 @@ const app = express();
 
 // Serve public folder
 app.use(express.static(path.join(__dirname, "public")));
+// app.use(express.static('public'))
 
 const sess = {
     secret: '34kj5g34jk25g3jh4g23lk4gkjh234g23jkh4g2',
@@ -48,10 +49,6 @@ app.use(logger("dev"));
 // Body parser
 app.use(express.json({limit: "10kb"}));
 app.use(express.urlencoded({extended: false}));
-
-app.get('/blue/baby', (req, res) => {
-    res.json('HELLO BLUE BABY');
-})
 
 // ROUTES
 app.use("/api/v1/user", userRouter);

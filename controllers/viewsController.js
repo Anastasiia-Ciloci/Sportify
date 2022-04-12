@@ -26,17 +26,19 @@ exports.renderWorkout = catchAsync(async (req, res, next) => {
     });
     console.log(req.params)
     const selectedWorkout = selectedWorkoutData.get({plain: true});
+    console.log(selectedWorkout)
 
     res.render("selected-workout", {selectedWorkout});
 });
 
 // render profile page
 exports.renderProfile = catchAsync(async (req, res, next) => {
+    console.log('here!')
     const userData = await User.findByPk(req.params.id, {
         include: {
             model: Workout,
         },
     });
-    const user = userData.get({plain: true})
-    res.render("profilepage", {user});
+    // const user = userData.get({plain: true})
+    res.render("profilepage", {});
 });
