@@ -1,14 +1,16 @@
 // PACKAGE IMPORTS
-const session = require('express-session');
+const session = require("express-session");
 const createError = require("http-errors");
 const express = require("express");
 const path = require("path");
 const logger = require("morgan");
 
 const exphbs = require("express-handlebars");
-const hbs = exphbs.create({});
+const helpers = require("./utils/helper");
+const hbs = exphbs.create({ helpers });
 
 const AppError = require("./utils/appError");
+
 const globalErrorHandler = require("./controllers/errorController");
 
 // ROUTES IMPORTS
@@ -27,10 +29,10 @@ app.use(express.static(path.join(__dirname, "public")));
 // app.use(express.static('public'))
 
 const sess = {
-    secret: '34kj5g34jk25g3jh4g23lk4gkjh234g23jkh4g2',
-    cookie: {},
-    resave: false,
-    saveUninitialized: false,
+  secret: "34kj5g34jk25g3jh4g23lk4gkjh234g23jkh4g2",
+  cookie: {},
+  resave: false,
+  saveUninitialized: false,
 };
 
 app.use(session(sess));
@@ -47,8 +49,8 @@ app.set("view engine", "handlebars");
 app.use(logger("dev"));
 
 // Body parser
-app.use(express.json({limit: "10kb"}));
-app.use(express.urlencoded({extended: false}));
+app.use(express.json({ limit: "10kb" }));
+app.use(express.urlencoded({ extended: false }));
 
 // ROUTES
 app.use("/api/v1/user", userRouter);
@@ -60,7 +62,7 @@ app.use("/", viewsRouter);
 
 // ERROR HANDLERS
 app.all("*", (req, res, next) => {
-    next(new AppError(`Can't find ${req.originalUrl} on this server`, 404)); // <--- When this catches an error.
+  next(new AppError(`Can't find ${req.originalUrl} on this server`, 404)); // <--- When this catches an error.
 });
 
 // Error handler
