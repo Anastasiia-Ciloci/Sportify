@@ -1,6 +1,5 @@
 # Sportify
 
-
 ## Table of Contents
 
 1. [Description](#description)
@@ -16,6 +15,8 @@ User will be able to signup/login to the app. And once the users logged in they 
 # link to deployed app
 
 # Visual
+
+![screenshot of app](./public/screenshot/2022-04-12_08-05-19.png)
 
 # Creators
 
