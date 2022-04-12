@@ -14,7 +14,7 @@ exports.renderTimeline = catchAsync(async (req, res, next) => {
 
     const workouts = workoutsArray.map(workout => workout.get({plain: true}));
 
-    res.render('timeline', {workouts});
+    res.render('timeline', {workouts, loggedIn: req.session.loggedIn});
 });
 
 // renders page with selected workout
@@ -28,7 +28,7 @@ exports.renderWorkout = catchAsync(async (req, res, next) => {
     const selectedWorkout = selectedWorkoutData.get({plain: true});
     console.log(selectedWorkout)
 
-    res.render("selected-workout", {selectedWorkout});
+    res.render("selected-workout", {selectedWorkout,  loggedIn: req.session.loggedIn});
 });
 
 // render profile page
@@ -40,5 +40,5 @@ exports.renderProfile = catchAsync(async (req, res, next) => {
         },
     });
     // const user = userData.get({plain: true})
-    res.render("profilepage", {});
+    res.render("profilepage", {  loggedIn: req.session.loggedIn });
 });
