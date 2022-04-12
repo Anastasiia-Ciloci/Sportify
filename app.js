@@ -4,6 +4,8 @@ const createError = require("http-errors");
 const express = require("express");
 const path = require("path");
 const logger = require("morgan");
+const SequelizeStore = require('connect-session-sequelize')(session.Store); 
+const sequelize = require('./config/connection');
 
 const exphbs = require("express-handlebars");
 const helpers = require("./utils/helper");
@@ -33,6 +35,7 @@ const sess = {
   cookie: {},
   resave: false,
   saveUninitialized: false,
+  store: new SequelizeStore({db:sequelize}),
 };
 
 app.use(session(sess));
