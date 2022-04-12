@@ -1,28 +1,18 @@
-
-const { User } = require('../models');
+const {User} = require('../models');
 const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
 
 exports.signup = catchAsync(async (req, res, next) => {
-    console.log(0)
     const newUserData = await User.create({...req.body, passwordConfirm: req.body.password})
-    console.log(1, newUserData)
     const newUser = newUserData.get({plain: true})
-    console.log(2, newUser)
 
     delete newUser.password;
-    console.log(3)
     delete newUser.passwordConfirm;
-    console.log(4)
 
     req.session.save(() => {
-        console.log(5)
         req.session.user = newUser;
-        console.log(6)
         req.session.loggedIn = true;
-        console.log(7)
         res.json('Logged in.')
-        console.log(8)
     })
 })
 

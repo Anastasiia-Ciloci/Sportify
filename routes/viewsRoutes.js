@@ -8,6 +8,9 @@ router
     .route('/login')
     .get(viewsController.renderLoginSignup)
 
+router
+    .route('/profile')
+    .get(viewsController.renderProfile)
 
 router
     .route('/')
@@ -18,7 +21,7 @@ router
     .get(authController.isLoggedIn, viewsController.renderProfile)
 
 router
-    .route('/workouts/:slug')
+    .route('/workout/:slug')
     .get(authController.isLoggedIn, viewsController.renderWorkout)
 // .get(viewsController.renderProfile)
 
