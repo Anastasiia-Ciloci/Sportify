@@ -16,7 +16,7 @@ User will be able to signup/login to the app. And once the users logged in they 
 
 # Visual
 
-![screenshot](./public/screenshot/2022-04-12_08-05-19.png)
+![screenshot of app](./public/screenshot/2022-04-12_08-05-19.png)
 
 # Creators
 
