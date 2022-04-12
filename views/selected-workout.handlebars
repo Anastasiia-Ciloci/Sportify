@@ -1,17 +1,11 @@
 <div class="card-description">
   <div id="workout-description">
+    <h2>{{selectedWorkout.title}}</h2>
     <h3><strong>Workout description</strong></h3>
-    <p>
-      {{#each workouts as |workout|}}
-        {{>workout.description}}
-      {{/each}}
-      {{workout_description}}
-      <!--      Lorem, ipsum dolor sit amet consectetur-->
-
-      {{!-- <li>{{exercise 1}}</li>
-      <li>{{exercise 2}}</li>
-      <li>{{exercise 3}}</li> --}}
-    </p>
+    <p>{{selectedWorkout.description}}</p>
+    <p>Intensity Level: {{selectedWorkout.intensity}}</p>
+    <p>Completion Time: {{selectedWorkout.time_frame}}</p>
+    <p>Comments {{selectedWorkout.content}}</p>
     <button class="btn-add-to-list">Add to your list</button>
   </div>
   <div class="comment-section">
@@ -27,8 +21,3 @@
     <button class="btn btn-primary" type="button">Send</button>
   </div>
 </div>
-{{! </body>
-  <footer>
-    <h4 id="copyright">Copyright © 2022 by Sportify</h4>
-  </footer>
-</html> }}
