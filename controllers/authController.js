@@ -14,7 +14,17 @@ exports.signup = catchAsync(async (req, res, next) => {
         req.session.loggedIn = true;
         res.json('Logged in.')
     })
-})
+});
+
+exports.logout = catchAsync(async (req, res, next) => {
+    if (req.session.loggedIn) {
+        req.session.destroy( () => {
+            res.status(204).end()
+        })
+    } else {
+        res.status(404).end()
+    }
+});
 
 exports.login = catchAsync(async (req, res, next) => {
     const {email, password} = req.body;
